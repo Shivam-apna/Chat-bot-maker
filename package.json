@@ -1,0 +1,29 @@
+{
+  "name": "create-ai-bot-for-your-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "devcss": "postcss public/styles/tailwind.css -o public/styles/style.css -w",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "firebase": "^9.22.2",
+    "firebase-admin": "^11.9.0",
+    "pdf-parse": "^1.1.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.5"
+  },
+  "devDependencies": {
+    "postcss-cli": "^10.0.0"
+  }
+}

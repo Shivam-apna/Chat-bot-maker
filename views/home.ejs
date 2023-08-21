@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="inpFile">
+    <button type="button" id="btnUpload">Upload</button>
+    <br>
+    <br>
+    <textarea style="width: 300px; height: 150px;" id="resultText"
+        placeholder="Your PDF text will appear here..."></textarea>
+    <script id="chatbotkit-widget" src="https://static.chatbotkit.com/integrations/widget/v2.js"
+        data-widget="cliy2m1v60013p80fdb9whhvb"></script>
+
+    <script>
+        const inpFile = document.getElementById("inpFile");
+        const btnUpload = document.getElementById("btnUpload");
+        const resultText = document.getElementById("resultText");
+
+        btnUpload.addEventListener("click", () => {
+            const formData = new FormData();
+
+            // check file type.
+            if (!inpFile.files[0].name.endsWith(".pdf")) {
+                alert("Please upload a PDF file.");
+                return;
+            }
+
+            formData.append("pdfFile", inpFile.files[0]);
+            fetch("/extract-text/:" + localStorage.getItem('userId'), {
+                method: "post",
+                body: formData
+            }).then(response => {
+                return response.text();
+            }).then(extractedText => {
+                resultText.value = extractedText.trim();
+                alert('PDF Uploaded.');
+            });
+        });
+    </script>
+</body>
+
+</html>
